@@ -5,7 +5,7 @@ on:
   push:
     branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions  tab
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -32,10 +32,12 @@ jobs:
              
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Update data file 2
+
+      - name: Update HTML file
         run: |
-         sed -i 's@<p id="myname"></p>@<p id="myname">${{ vars.MY_NAME }}</p>@g' index.html      
-         cat index.html
+          sed -i 's@<p id="myname"></p>@<p id="myname">${{ vars.MY_NAME }}</p>@g' index.html      
+          cat index.html
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
